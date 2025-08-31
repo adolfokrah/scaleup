@@ -90,7 +90,9 @@ export default function RichText(props: Props) {
     <ConvertRichText
       converters={jsxConverters}
       className={cn(
-        'payload-richtext',
+        `payload-richtext prose dark:prose-invert mb-5 prose-h3:font-tiempos 
+        prose-h3:text-2xl lg:prose-h3:text-3xl prose-h3:font-light prose-h3:mb-6 prose-h3:leading-tight 
+        prose-h2:text-4xl prose-h2:font-tiempos lg:prose-h2:text-6xl prose-h2:font-light prose-h2:mb-8 prose-h2:leading-tight font-work-sans`,
         {
           container: enableGutter,
           'max-w-none': !enableGutter,

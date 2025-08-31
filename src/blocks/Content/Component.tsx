@@ -1,10 +1,13 @@
 import { cn } from '@/utilities/ui'
 import React from 'react'
 import RichText from '@/components/RichText'
+import { ArrowRight } from 'lucide-react'
 
 import type { ContentBlock as ContentBlockProps } from '@/payload-types'
 
 import { CMSLink } from '../../components/Link'
+import Link from 'next/link'
+import { getHref } from '@/utilities/getHref'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns } = props
@@ -18,7 +21,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
   return (
     <div className="container my-16">
-      <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16">
+      <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16 py-10 lg:py-20">
         {columns &&
           columns.length > 0 &&
           columns.map((col, index) => {
@@ -33,7 +36,15 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
               >
                 {richText && <RichText data={richText} enableGutter={false} />}
 
-                {enableLink && <CMSLink {...link} />}
+                {enableLink && (
+                  <Link
+                    className="text-primary font-work-sans flex gap-4 items-center underline-hover w-fit after:!bg-primary/50 after:h-0.5"
+                    href={getHref({ ...link })!}
+                  >
+                    {link?.label}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                )}
               </div>
             )
           })}
