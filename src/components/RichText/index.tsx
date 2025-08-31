@@ -38,6 +38,29 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
+  text: ({ node }) => {
+    let content: React.ReactNode = node.text
+
+    // Apply formatting in the right order
+    if (node.format & 1) content = <strong>{content}</strong> // bold
+    if (node.format & 2) content = <em>{content}</em> // italic
+    if (node.format & 8)
+      content = (
+        <span
+          className="break-words hyphens-auto inline leading-tight bg-no-repeat"
+          style={{
+            backgroundImage: `linear-gradient(transparent 70%, hsl(var(--primary)) 70%, hsl(var(--primary) / 0.8) 90%, transparent 85%)`,
+            backgroundSize: '100% 100%',
+            boxDecorationBreak: 'clone',
+            WebkitBoxDecorationBreak: 'clone',
+          }}
+        >
+          {content}
+        </span>
+      ) // underline
+
+    return content
+  },
   blocks: {
     banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
     mediaBlock: ({ node }) => (
@@ -71,7 +94,6 @@ export default function RichText(props: Props) {
         {
           container: enableGutter,
           'max-w-none': !enableGutter,
-          'mx-auto prose md:prose-md dark:prose-invert': enableProse,
         },
         className,
       )}
