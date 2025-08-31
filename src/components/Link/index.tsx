@@ -45,10 +45,16 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const size = appearance === 'link' ? 'clear' : sizeFromProps
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
 
+  // Custom underline effect for nav links
+  const underlineEffect =
+    appearance === 'link'
+      ? 'relative !no-underline after:content-[""] after:absolute after:left-0 after:bottom-1 after:w-full after:h-2 after:bg-primary after:z-[-1] after:transition-transform after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:opacity-80'
+      : ''
+
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
     return (
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link className={cn(className, underlineEffect)} href={href || url || ''} {...newTabProps}>
         {label && label}
         {children && children}
       </Link>
@@ -57,7 +63,11 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   return (
     <Button asChild className={className} size={size} variant={appearance}>
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link
+        className={cn('', className, underlineEffect)}
+        href={href || url || ''}
+        {...newTabProps}
+      >
         {label && label}
         {children && children}
       </Link>

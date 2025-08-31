@@ -96,6 +96,7 @@ const config = {
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
+        tiempos: ['TiemposText', 'TiemposFine', 'TiemposHeadline', 'serif'],
       },
       keyframes: {
         'accordion-down': {
@@ -114,8 +115,24 @@ const config = {
               '--tw-prose-body': 'var(--text)',
               '--tw-prose-headings': 'var(--text)',
               h1: {
+                fontFamily: 'TiemposText, TiemposFine, TiemposHeadline, serif',
                 fontWeight: 'normal',
                 marginBottom: '0.25em',
+              },
+              h2: {
+                fontFamily: 'TiemposText, TiemposFine, TiemposHeadline, serif',
+              },
+              h3: {
+                fontFamily: 'TiemposText, TiemposFine, TiemposHeadline, serif',
+              },
+              h4: {
+                fontFamily: 'TiemposText, TiemposFine, TiemposHeadline, serif',
+              },
+              h5: {
+                fontFamily: 'TiemposText, TiemposFine, TiemposHeadline, serif',
+              },
+              h6: {
+                fontFamily: 'TiemposText, TiemposFine, TiemposHeadline, serif',
               },
             },
           ],

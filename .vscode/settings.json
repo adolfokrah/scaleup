@@ -36,5 +36,18 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     }
+  },
+  "tailwindCSS.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html",
+    "javascript": "html",
+    "javascriptreact": "html"
+  },
+  "tailwindCSS.experimental.configFile": "./tailwind.config.mjs",
+  "tailwindCSS.files.exclude": ["**/.git/**", "**/node_modules/**", "**/.hg/**", "**/.svn/**"],
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.validate": true,
+  "editor.quickSuggestions": {
+    "strings": true
   }
 }
