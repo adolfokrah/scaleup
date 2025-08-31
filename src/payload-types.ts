@@ -184,7 +184,7 @@ export interface Page {
             /**
              * Choose how the link should be rendered.
              */
-            appearance?: ('default' | 'outline') | null;
+            appearance?: ('default' | 'outline' | 'primaryOutline') | null;
           };
           id?: string | null;
         }[]
@@ -431,7 +431,7 @@ export interface CallToActionBlock {
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'outline' | 'primaryOutline') | null;
         };
         id?: string | null;
       }[]
@@ -445,6 +445,14 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
+  /**
+   * Background color (hex value, e.g., #ffffff or color name)
+   */
+  backgroundColor?: string | null;
+  /**
+   * Text color (hex value, e.g., #000000 or color name)
+   */
+  textColor?: string | null;
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
@@ -481,7 +489,7 @@ export interface ContentBlock {
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'outline' | 'primaryOutline') | null;
         };
         id?: string | null;
       }[]
@@ -540,7 +548,7 @@ export interface MediaContentBlock {
     /**
      * Choose how the link should be rendered.
      */
-    appearance?: ('default' | 'outline') | null;
+    appearance?: ('default' | 'outline' | 'primaryOutline') | null;
   };
   id?: string | null;
   blockName?: string | null;
@@ -1116,6 +1124,8 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  textColor?: T;
   columns?:
     | T
     | {

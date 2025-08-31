@@ -34,7 +34,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
             >
               <RichText
                 className="mb-6
-                      mx-auto prose dark:prose-invert prose-h1:font-tiempos prose-h1:text-5xl md:prose-h1:text-6xl lg:prose-h1:text-8xl prose-h1:font-thin  prose-h1:mb-6 prose-h1:leading-tight"
+                      mx-auto prose"
                 data={richText}
                 enableGutter={false}
               />

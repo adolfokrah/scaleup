@@ -14,7 +14,7 @@ export const MediaContentBlock: React.FC<MediaContentBlockProps> = (props) => {
   const { media, content, link, enableLink, layout = 'imageLeft' } = props
 
   return (
-    <div className="my-20">
+    <div>
       <div
         className={cn('grid lg:grid-cols-2 items-center lg:min-h-[40vh] 2xl:min-h-[60vh] relative')}
       >
@@ -28,9 +28,9 @@ export const MediaContentBlock: React.FC<MediaContentBlockProps> = (props) => {
 
         {/* Media Section */}
         <div
-          className={cn('relative flex items-center z-10 2xl:min-h-[80vh]', {
+          className={cn('relative flex items-center z-10 2xl:min-h-[80vh] order-1', {
             'justify-start pl-0 pr-8': layout === 'imageLeft',
-            'justify-end pl-8 pr-0 order-2': layout === 'imageRight',
+            'justify-end pl-8 pr-0 lg:order-2': layout === 'imageRight',
           })}
         >
           {media && typeof media === 'object' && (
@@ -44,8 +44,8 @@ export const MediaContentBlock: React.FC<MediaContentBlockProps> = (props) => {
 
         {/* Content Section */}
         <div
-          className={cn('relative z-10 py-10', {
-            'order-1': layout === 'imageRight',
+          className={cn('relative z-10 py-10 order-2', {
+            'lg:order-1': layout === 'imageRight',
           })}
         >
           <div className="container">

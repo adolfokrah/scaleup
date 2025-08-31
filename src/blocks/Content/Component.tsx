@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { getHref } from '@/utilities/getHref'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
-  const { columns } = props
+  const { columns, backgroundColor, textColor } = props
 
   const colsSpanClasses = {
     full: '12',
@@ -19,35 +19,58 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     twoThirds: '8',
   }
 
+  const containerStyles = {
+    backgroundColor: backgroundColor || undefined,
+  }
+
+  const headingStyles = textColor
+    ? ({
+        '--heading-color': textColor,
+      } as React.CSSProperties)
+    : undefined
+
   return (
-    <div className="container my-16">
-      <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16 py-10 lg:py-20">
-        {columns &&
-          columns.length > 0 &&
-          columns.map((col, index) => {
-            const { enableLink, link, richText, size } = col
+    <div style={containerStyles} className="my-16">
+      <div className="container">
+        <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16 py-10 lg:py-40">
+          {columns &&
+            columns.length > 0 &&
+            columns.map((col, index) => {
+              const { enableLink, link, richText, size } = col
 
-            return (
-              <div
-                className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
-                  'md:col-span-2': size !== 'full',
-                })}
-                key={index}
-              >
-                {richText && <RichText data={richText} enableGutter={false} />}
+              return (
+                <div
+                  className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
+                    'md:col-span-2': size !== 'full',
+                  })}
+                  key={index}
+                >
+                  {richText && (
+                    <div style={headingStyles}>
+                      <RichText
+                        data={richText}
+                        enableGutter={false}
+                        className={cn('prose dark:prose-invert', {
+                          '[&_h2]:text-[var(--heading-color)] [&_h3]:text-[var(--heading-color)]':
+                            textColor,
+                        })}
+                      />
+                    </div>
+                  )}
 
-                {enableLink && (
-                  <Link
-                    className="text-primary font-work-sans flex gap-4 items-center underline-hover w-fit after:!bg-primary/50 after:h-0.5"
-                    href={getHref({ ...link })!}
-                  >
-                    {link?.label}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                )}
-              </div>
-            )
-          })}
+                  {enableLink && (
+                    <Link
+                      className="text-primary font-work-sans flex gap-4 items-center underline-hover w-fit after:!bg-primary/40 after:h-0.5 z-10"
+                      href={getHref({ ...link })!}
+                    >
+                      {link?.label}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
+                </div>
+              )
+            })}
+        </div>
       </div>
     </div>
   )

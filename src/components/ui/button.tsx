@@ -27,6 +27,8 @@ const buttonVariants = cva(
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
         outline:
           'border border-border bg-transparent text-white relative overflow-hidden hover:text-accent-foreground before:absolute before:inset-0 before:bg-card before:transform before:scale-y-0 before:origin-bottom before:transition-transform before:duration-300 before:-z-10 hover:before:scale-y-100',
+        primaryOutline:
+          'border border-primary text-primary relative overflow-hidden hover:text-accent-foreground before:absolute before:inset-0 before:bg-primary hover:text-white before:transform before:scale-y-0 before:origin-bottom before:transition-transform before:duration-300 before:-z-10 hover:before:scale-y-100',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
       },
     },

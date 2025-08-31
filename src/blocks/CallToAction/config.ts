@@ -1,10 +1,15 @@
 import type { Block } from 'payload'
 
 import {
+  BoldFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
+  ItalicFeature,
   lexicalEditor,
+  LinkFeature,
+  ParagraphFeature,
+  UnderlineFeature,
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '../../fields/linkGroup'
@@ -21,6 +26,13 @@ export const CallToAction: Block = {
           return [
             ...rootFeatures,
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            BoldFeature(),
+            ItalicFeature(),
+            UnderlineFeature(),
+            LinkFeature({
+              enabledCollections: ['pages', 'posts'],
+            }),
+            ParagraphFeature(),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]
@@ -29,7 +41,7 @@ export const CallToAction: Block = {
       label: false,
     },
     linkGroup({
-      appearances: ['default', 'outline-solid'],
+      appearances: ['default', 'primaryOutline'],
       overrides: {
         maxRows: 2,
       },
