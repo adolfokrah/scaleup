@@ -48,7 +48,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   // Custom underline effect for nav links
   const underlineEffect =
     appearance === 'link'
-      ? 'relative !no-underline after:content-[""] after:absolute after:left-0 after:bottom-1 after:w-full after:h-2 after:bg-primary after:z-[-1] after:transition-transform after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:opacity-80'
+      ? 'relative no-underline! after:content-[""] after:absolute after:left-0 after:bottom-1 after:w-full after:h-2 after:bg-primary after:z-[-1] after:transition-transform after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:opacity-80'
       : ''
 
   /* Ensure we don't break any styles set by richText */
