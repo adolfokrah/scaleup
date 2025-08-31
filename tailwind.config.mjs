@@ -38,11 +38,11 @@ const config = {
         xl: '2rem',
       },
       screens: {
-        '2xl': '86rem',
-        lg: '64rem',
-        md: '48rem',
-        sm: '40rem',
-        xl: '80rem',
+        '2xl': '120rem',
+        lg: '80rem',
+        md: '60rem',
+        sm: '48rem',
+        xl: '100rem',
       },
     },
     extend: {
@@ -96,7 +96,8 @@ const config = {
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
-        tiempos: ['TiemposText', 'TiemposFine', 'TiemposHeadline', 'serif'],
+        tiempos: ['TiemposFine', 'TiemposHeadline', 'serif'],
+        'work-sans': ['var(--font-work-sans)', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

@@ -4,7 +4,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 import * as React from 'react'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center cursor-pointer justify-center whitespace-nowrap rounded-none text-md font-regular ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     defaultVariants: {
       size: 'default',
@@ -13,17 +13,20 @@ const buttonVariants = cva(
     variants: {
       size: {
         clear: '',
-        default: 'h-10 px-4 py-2',
-        icon: 'h-10 w-10',
-        lg: 'h-11 rounded px-8',
-        sm: 'h-9 rounded px-3',
+        default: 'h-14 px-10 py-2',
+        // icon: 'h-10 w-10',
+        // lg: 'h-11 rounded-none px-8',
+        // sm: 'h-9 rounded-none px-3',
       },
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        default:
+          'bg-primary text-primary-foreground relative overflow-hidden before:absolute before:inset-0 before:bg-secondary/20 before:transform before:scale-y-0 before:origin-bottom before:transition-transform before:duration-300 hover:before:scale-y-100 hover:text-white',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        ghost: 'hover:bg-card hover:text-accent-foreground',
+        ghost:
+          'relative overflow-hidden hover:text-accent-foreground before:absolute before:inset-0 before:bg-card before:transform before:scale-y-0 before:origin-bottom before:transition-transform before:duration-300 before:-z-10 hover:before:scale-y-100',
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
-        outline: 'border border-border bg-background hover:bg-card hover:text-accent-foreground',
+        outline:
+          'border border-border bg-transparent text-white relative overflow-hidden hover:text-accent-foreground before:absolute before:inset-0 before:bg-card before:transform before:scale-y-0 before:origin-bottom before:transition-transform before:duration-300 before:-z-10 hover:before:scale-y-100',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
       },
     },

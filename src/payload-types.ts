@@ -184,7 +184,7 @@ export interface Page {
             /**
              * Choose how the link should be rendered.
              */
-            appearance?: ('default' | 'outline-solid') | null;
+            appearance?: ('default' | 'outline') | null;
           };
           id?: string | null;
         }[]
@@ -431,7 +431,7 @@ export interface CallToActionBlock {
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline-solid') | null;
+          appearance?: ('default' | 'outline') | null;
         };
         id?: string | null;
       }[]
@@ -481,7 +481,7 @@ export interface ContentBlock {
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline-solid') | null;
+          appearance?: ('default' | 'outline') | null;
         };
         id?: string | null;
       }[]
@@ -1569,9 +1569,68 @@ export interface Header {
           url?: string | null;
           label: string;
         };
+        /**
+         * Title displayed in the dropdown menu (e.g., "Overview"). Only used if this link has submenus.
+         */
+        menuTitle?: string | null;
+        /**
+         * Subtitle displayed under the title in the dropdown menu. Only used if this link has submenus.
+         */
+        menuSubtitle?: string | null;
+        /**
+         * Create dropdown menu sections with multiple links
+         */
+        submenus?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: string | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: string | Post;
+                    } | null);
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Configuration for the support button in the header
+   */
+  supportButton: {
+    /**
+     * Text displayed on the support button
+     */
+    label?: string | null;
+    /**
+     * Visual style of the button
+     */
+    variant?: ('default' | 'outline' | 'secondary' | 'ghost' | 'link') | null;
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: string | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: string | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1621,7 +1680,38 @@ export interface HeaderSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        menuTitle?: T;
+        menuSubtitle?: T;
+        submenus?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
+            };
         id?: T;
+      };
+  supportButton?:
+    | T
+    | {
+        label?: T;
+        variant?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

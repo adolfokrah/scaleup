@@ -2,6 +2,16 @@
 
 @config '../../../tailwind.config.mjs';
 
+/* Container customization for Tailwind v4 */
+@layer base {
+  .container {
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -87,4 +97,47 @@ html {
 html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
+}
+
+/* Custom underline utility classes */
+@layer utilities {
+  /* Interactive underline - shows on hover */
+  .underline-hover {
+    @apply relative !no-underline;
+  }
+  
+  .underline-hover::after {
+    content: "";
+    @apply absolute left-0 bottom-[2px] w-full h-2 bg-primary -z-10 transition-transform duration-200 origin-bottom scale-y-0 opacity-80;
+  }
+  
+  .underline-hover:hover::after {
+    @apply scale-y-100;
+  }
+  
+  /* Static underline - always visible */
+  .underline-static {
+    @apply relative no-underline;
+  }
+  
+  .underline-static::after {
+    content: "";
+    @apply absolute left-0 bottom-[2px] w-full h-2 bg-primary -z-10 opacity-80 scale-y-100;
+  }
+
+  /* Dropdown animation */
+  .dropdown-enter {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
