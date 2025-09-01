@@ -93,7 +93,8 @@ export default function RichText(props: Props) {
         `payload-richtext prose dark:prose-invert mb-5 prose-h3:font-tiempos 
          dark:prose-invert prose-h1:font-tiempos prose-h1:text-5xl md:prose-h1:text-6xl lg:prose-h1:text-8xl prose-h1:font-thin  prose-h1:mb-6 prose-h1:leading-tight
         prose-h3:text-2xl lg:prose-h3:text-3xl prose-h3:font-light prose-h3:mb-6 prose-h3:leading-tight 
-        prose-h2:text-4xl prose-h2:font-tiempos lg:prose-h2:text-6xl prose-h2:font-light prose-h2:mb-8 prose-h2:leading-tight font-work-sans`,
+        prose-h2:text-4xl prose-h2:font-tiempos lg:prose-h2:text-6xl prose-h2:font-light prose-h2:mb-8 prose-h2:leading-tight font-work-sans
+        [&_.text-align-left]:text-left [&_.text-align-center]:text-center [&_.text-align-right]:text-right [&_.text-align-justify]:text-justify`,
         {
           container: enableGutter,
           'max-w-none': !enableGutter,

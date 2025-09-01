@@ -31,9 +31,9 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     : undefined
 
   return (
-    <div style={containerStyles} className="my-16">
+    <div style={containerStyles}>
       <div className="container">
-        <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16 py-10 lg:py-40">
+        <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16 py-10 lg:py-30">
           {columns &&
             columns.length > 0 &&
             columns.map((col, index) => {
