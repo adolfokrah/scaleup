@@ -1,11 +1,12 @@
+'use client'
 import { cn } from '@/utilities/ui'
 import React from 'react'
 import RichText from '@/components/RichText'
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 import type { ContentBlock as ContentBlockProps } from '@/payload-types'
 
-import { CMSLink } from '../../components/Link'
 import Link from 'next/link'
 import { getHref } from '@/utilities/getHref'
 
@@ -39,11 +40,19 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
               const { enableLink, link, richText, size } = col
 
               return (
-                <div
+                <motion.div
                   className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
                     'md:col-span-2': size !== 'full',
                   })}
                   key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: 'easeOut',
+                  }}
+                  viewport={{ once: true, margin: '-100px' }}
                 >
                   {richText && (
                     <div style={headingStyles}>
@@ -67,7 +76,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   )}
-                </div>
+                </motion.div>
               )
             })}
         </div>
