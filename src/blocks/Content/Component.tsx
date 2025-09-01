@@ -67,7 +67,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     </div>
                   )}
 
-                  {enableLink && (
+                  {enableLink && link && getHref({ ...link }) && (
                     <Link
                       className="text-primary font-work-sans flex gap-4 items-center underline-hover w-fit after:!bg-primary/40 after:h-0.5 z-10"
                       href={getHref({ ...link })!}

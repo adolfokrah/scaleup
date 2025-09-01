@@ -6,6 +6,7 @@ import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
+import { GoogleMaps } from '../../blocks/GoogleMaps/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { MediaContent } from '../../blocks/MediaContent/config'
 import { TeamBlock } from '../../blocks/TeamBlock/config'
@@ -80,6 +81,7 @@ export const Pages: CollectionConfig<'pages'> = {
               blocks: [
                 CallToAction,
                 Content,
+                GoogleMaps,
                 MediaBlock,
                 MediaContent,
                 Archive,

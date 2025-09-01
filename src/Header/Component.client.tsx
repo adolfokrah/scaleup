@@ -98,7 +98,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </div>
         </Button>
       </div>
-      {hoveredItem && menu && (
+      {hoveredItem && menu && getHref({ ...menu.link }) && (
         <div className="py-4 text-white gap-5 hidden md:block">
           <div className="container grid grid-cols-3 gap-5">
             <div className="flex flex-col gap-10">
@@ -119,26 +119,30 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               </div>
             </div>
             <div className="flex flex-col gap-3">
-              {menu?.submenus?.slice(0, 3).map((submenu, i) => (
-                <Link
-                  key={i}
-                  href={getHref({ ...submenu.link })!}
-                  className="text-lg font-thin hover:opacity-[.5] transition-opacity duration-300"
-                >
-                  {submenu.link?.label}
-                </Link>
-              ))}
+              {menu?.submenus?.slice(0, 3).map((submenu, i) =>
+                getHref({ ...submenu.link }) ? (
+                  <Link
+                    key={i}
+                    href={getHref({ ...submenu.link })!}
+                    className="text-lg font-thin hover:opacity-[.5] transition-opacity duration-300"
+                  >
+                    {submenu.link?.label}
+                  </Link>
+                ) : null,
+              )}
             </div>
             <div className="flex flex-col gap-3">
-              {menu?.submenus?.slice(3, 6).map((submenu, i) => (
-                <Link
-                  key={i}
-                  href={getHref({ ...submenu.link })!}
-                  className="text-lg font-thin hover:opacity-[.5] transition-opacity duration-300"
-                >
-                  {submenu.link?.label}
-                </Link>
-              ))}
+              {menu?.submenus?.slice(3, 6).map((submenu, i) =>
+                getHref({ ...submenu.link }) ? (
+                  <Link
+                    key={i}
+                    href={getHref({ ...submenu.link })!}
+                    className="text-lg font-thin hover:opacity-[.5] transition-opacity duration-300"
+                  >
+                    {submenu.link?.label}
+                  </Link>
+                ) : null,
+              )}
             </div>
           </div>
         </div>

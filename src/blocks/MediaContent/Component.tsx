@@ -83,7 +83,7 @@ export const MediaContentBlock: React.FC<MediaContentBlockProps> = (props) => {
             >
               {content && <RichText data={content} enableGutter={false} />}
 
-              {enableLink && link && (
+              {enableLink && link && getHref({ ...link }) && (
                 <div className="pt-4">
                   <Link href={getHref({ ...link })!}>
                     <Button>

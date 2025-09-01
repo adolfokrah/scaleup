@@ -195,7 +195,16 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | MediaContentBlock | ArchiveBlock | FormBlock | TeamBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | GoogleMapsBlock
+    | MediaBlock
+    | MediaContentBlock
+    | ArchiveBlock
+    | FormBlock
+    | TeamBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -517,6 +526,36 @@ export interface ContentBlock {
     | null;
   blockName?: string | null;
   blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GoogleMapsBlock".
+ */
+export interface GoogleMapsBlock {
+  id?: string | null;
+  /**
+   * Optional title for the map section
+   */
+  title?: string | null;
+  /**
+   * Full address to display on the map
+   */
+  address: string;
+  /**
+   * Optional: Latitude coordinate (e.g., 40.7128) - not needed for embedded maps
+   */
+  latitude?: number | null;
+  /**
+   * Optional: Longitude coordinate (e.g., -74.0060) - not needed for embedded maps
+   */
+  longitude?: number | null;
+  /**
+   * Zoom level (1-20, higher = closer)
+   */
+  zoom?: number | null;
+  height?: ('small' | 'medium' | 'large' | 'xlarge') | null;
+  blockName?: string | null;
+  blockType: 'googleMaps';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1131,6 +1170,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
+        googleMaps?: T | GoogleMapsBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         mediaContent?: T | MediaContentBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
@@ -1203,6 +1243,20 @@ export interface ContentBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GoogleMapsBlock_select".
+ */
+export interface GoogleMapsBlockSelect<T extends boolean = true> {
+  id?: T;
+  title?: T;
+  address?: T;
+  latitude?: T;
+  longitude?: T;
+  zoom?: T;
+  height?: T;
   blockName?: T;
 }
 /**

@@ -6,6 +6,7 @@ import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
+import { GoogleMapsBlock } from '@/blocks/GoogleMaps/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { MediaContentBlock } from '@/blocks/MediaContent/Component'
 import { TeamBlock } from '@/blocks/TeamBlock/Component'
@@ -15,6 +16,7 @@ const blockComponents = {
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
+  googleMaps: GoogleMapsBlock,
   mediaBlock: MediaBlock,
   mediaContent: MediaContentBlock,
   teamBlock: TeamBlock,
