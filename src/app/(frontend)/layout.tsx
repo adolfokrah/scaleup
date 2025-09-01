@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 
-import { cn } from '@/utilities/ui'
 import { Work_Sans } from 'next/font/google'
 import React from 'react'
 
