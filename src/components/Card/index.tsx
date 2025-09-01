@@ -17,9 +17,19 @@ export const Card: React.FC<{
   relationTo?: 'posts'
   showCategories?: boolean
   title?: string
+  titleClassName?: string
+  contentClassName?: string
 }> = (props) => {
   const { card, link } = useClickableCard({})
-  const { className, doc, relationTo, showCategories, title: titleFromProps } = props
+  const {
+    className,
+    doc,
+    relationTo,
+    showCategories,
+    title: titleFromProps,
+    titleClassName = true,
+    contentClassName,
+  } = props
 
   const { slug, categories, meta, title } = doc || {}
   const { description, image: metaImage } = meta || {}
@@ -35,7 +45,7 @@ export const Card: React.FC<{
         {!metaImage && <div className="">No image</div>}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
       </div>
-      <div className="py-4">
+      <div className={cn('py-4', contentClassName)}>
         {showCategories && hasCategories && (
           <div className="uppercase text-sm mb-4 text-primary font-work-sans">
             {showCategories && hasCategories && (
@@ -64,7 +74,7 @@ export const Card: React.FC<{
         )}
         {titleToUse && (
           <div className="prose mb-8">
-            <h3 className="font-tiempos font-light text-primary">
+            <h3 className={cn('font-tiempos font-light text-primary', titleClassName)}>
               <Link className="not-prose" href={href} ref={link.ref}>
                 {titleToUse}
               </Link>
@@ -77,13 +87,15 @@ export const Card: React.FC<{
           </div>
         )}
 
-        <Link
-          className="not-prose font-work-sans text-primary underline-hover after:!bg-primary/40 "
-          href={href}
-          ref={link.ref}
-        >
-          Read more
-        </Link>
+        <div className="w-content">
+          <Link
+            className="not-prose font-work-sans text-primary underline-hover after:!bg-primary/40 "
+            href={href}
+            ref={link.ref}
+          >
+            Read more
+          </Link>
+        </div>
       </div>
     </article>
   )

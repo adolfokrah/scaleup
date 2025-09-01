@@ -8,7 +8,7 @@ import * as React from 'react'
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
     aria-label="pagination"
-    className={cn('mx-auto flex w-full justify-center', className)}
+    className={cn('mx-auto flex w-full', className)}
     role="navigation"
     {...props}
   />
@@ -35,7 +35,7 @@ const PaginationLink = ({ className, isActive, size = 'clear', ...props }: Pagin
     className={cn(
       buttonVariants({
         size,
-        variant: isActive ? 'outline' : 'ghost',
+        variant: isActive ? 'default' : 'ghost',
       }),
       'h-10 w-10', // Add icon-like dimensions since icon size is not available
       className,
@@ -50,7 +50,7 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to previous page"
-    className={cn('gap-1 pl-2.5', className)}
+    className={cn('gap-1 pl-10', className)}
     size="default"
     {...props}
   >
@@ -62,7 +62,7 @@ const PaginationPrevious = ({
 const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to next page"
-    className={cn('gap-1 pr-2.5', className)}
+    className={cn('gap-1 pr-10', className)}
     size="default"
     {...props}
   >

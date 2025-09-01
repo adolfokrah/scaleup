@@ -33,9 +33,7 @@ export const LowImpactHero: React.FC<LowImpactHeroType> = ({ children, richText 
         )}
       />
 
-      <div className="hidden md:block bg-secondary h-[500px] w-[80%] lg:absolute top-0 left-0 z-2">
-        sdfsdfs
-      </div>
+      <div className="hidden md:block bg-secondary h-[500px] w-[80%] lg:absolute top-0 left-0 z-2"></div>
     </div>
   )
 }

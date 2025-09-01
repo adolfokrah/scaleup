@@ -8,6 +8,7 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import { LowImpactHero } from '@/heros/LowImpact'
 
 export const revalidate = 600
 
@@ -34,29 +35,24 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   return (
-    <div className="pt-24 pb-24">
-      <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+    <div>
+      <LowImpactHero>
+        <div className="w-fit">
+          <h1 className="text-4xl md:text-6xl font-bold font-tiempos underline-static after:!h-5 mt-20">
+            Articles
+          </h1>
         </div>
-      </div>
+      </LowImpactHero>
+      <div className="pt-24 pb-24">
+        <PageClient />
 
-      <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={posts.page}
-          limit={12}
-          totalDocs={posts.totalDocs}
-        />
-      </div>
+        <CollectionArchive posts={posts.docs} />
 
-      <CollectionArchive posts={posts.docs} />
-
-      <div className="container">
-        {posts?.page && posts?.totalPages > 1 && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
-        )}
+        <div className="container">
+          {posts?.page && posts?.totalPages > 1 && (
+            <Pagination page={posts.page} totalPages={posts.totalPages} />
+          )}
+        </div>
       </div>
     </div>
   )
