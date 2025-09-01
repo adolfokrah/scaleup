@@ -5,6 +5,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import sharp from 'sharp' // sharp-import
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
+import type { PayloadHandler } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
@@ -99,4 +100,42 @@ export default buildConfig({
     },
     tasks: [],
   },
+  endpoints: [
+    {
+      path: '/create-temp-user',
+      method: 'post',
+      handler: async (req: PayloadRequest): Promise<Response> => {
+        try {
+          // Get payload instance
+          const payload = req.payload
+
+          // Replace with your user collection slug (e.g., "users")
+          const newUser = await payload.create({
+            collection: 'users',
+            data: {
+              email: 'admin@local.dev',
+              password: 'TempPass123!',
+              name: 'Temporary Admin',
+            },
+          })
+
+          return Response.json({
+            message: 'Temporary user created successfully',
+            user: {
+              id: newUser.id,
+              email: newUser.email,
+            },
+          })
+        } catch (err: any) {
+          console.error('Error creating temp user:', err)
+          return Response.json(
+            {
+              error: err.message || 'Failed to create temporary user',
+            },
+            { status: 500 },
+          )
+        }
+      },
+    },
+  ],
 })
