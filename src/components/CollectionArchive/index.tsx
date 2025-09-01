@@ -12,13 +12,21 @@ export const CollectionArchive: React.FC<Props> = (props) => {
 
   return (
     <div className={cn('container')}>
-      <div>
-        <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-4 gap-x-4 lg:gap-y-8 lg:gap-x-8 xl:gap-x-8">
+      <div className="border-t border-gray-200/60 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8">
           {posts?.map((result, index) => {
             if (typeof result === 'object' && result !== null) {
               return (
-                <div className="col-span-4" key={index}>
-                  <Card className="h-full" doc={result} relationTo="posts" showCategories />
+                <div
+                  key={index}
+                  className="p-6 bg-white/50 lg:[&:nth-child(3n+2)]:border-x lg:[&:nth-child(3n+2)]:border-gray-200/60 pt-8"
+                >
+                  <Card
+                    className="h-full border-none"
+                    doc={result}
+                    relationTo="posts"
+                    showCategories
+                  />
                 </div>
               )
             }
