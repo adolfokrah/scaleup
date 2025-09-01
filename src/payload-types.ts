@@ -180,6 +180,10 @@ export interface Page {
                   value: string | Post;
                 } | null);
             url?: string | null;
+            /**
+             * Optional anchor link (e.g., #section-id) to scroll to a specific section
+             */
+            anchor?: string | null;
             label: string;
             /**
              * Choose how the link should be rendered.
@@ -435,6 +439,10 @@ export interface CallToActionBlock {
                 value: string | Post;
               } | null);
           url?: string | null;
+          /**
+           * Optional anchor link (e.g., #section-id) to scroll to a specific section
+           */
+          anchor?: string | null;
           label: string;
           /**
            * Choose how the link should be rendered.
@@ -453,6 +461,7 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
+  id?: string | null;
   /**
    * Background color (hex value, e.g., #ffffff or color name)
    */
@@ -493,6 +502,10 @@ export interface ContentBlock {
                 value: string | Post;
               } | null);
           url?: string | null;
+          /**
+           * Optional anchor link (e.g., #section-id) to scroll to a specific section
+           */
+          anchor?: string | null;
           label: string;
           /**
            * Choose how the link should be rendered.
@@ -502,7 +515,6 @@ export interface ContentBlock {
         id?: string | null;
       }[]
     | null;
-  id?: string | null;
   blockName?: string | null;
   blockType: 'content';
 }
@@ -521,6 +533,7 @@ export interface MediaBlock {
  * via the `definition` "MediaContentBlock".
  */
 export interface MediaContentBlock {
+  id?: string | null;
   layout?: ('imageLeft' | 'imageRight') | null;
   media: string | Media;
   content: {
@@ -552,13 +565,16 @@ export interface MediaContentBlock {
           value: string | Post;
         } | null);
     url?: string | null;
+    /**
+     * Optional anchor link (e.g., #section-id) to scroll to a specific section
+     */
+    anchor?: string | null;
     label: string;
     /**
      * Choose how the link should be rendered.
      */
     appearance?: ('default' | 'outline' | 'primaryOutline') | null;
   };
-  id?: string | null;
   blockName?: string | null;
   blockType: 'mediaContent';
 }
@@ -1102,6 +1118,7 @@ export interface PagesSelect<T extends boolean = true> {
                     newTab?: T;
                     reference?: T;
                     url?: T;
+                    anchor?: T;
                     label?: T;
                     appearance?: T;
                   };
@@ -1150,6 +1167,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              anchor?: T;
               label?: T;
               appearance?: T;
             };
@@ -1163,6 +1181,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
+  id?: T;
   backgroundColor?: T;
   textColor?: T;
   columns?:
@@ -1178,12 +1197,12 @@ export interface ContentBlockSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              anchor?: T;
               label?: T;
               appearance?: T;
             };
         id?: T;
       };
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1200,6 +1219,7 @@ export interface MediaBlockSelect<T extends boolean = true> {
  * via the `definition` "MediaContentBlock_select".
  */
 export interface MediaContentBlockSelect<T extends boolean = true> {
+  id?: T;
   layout?: T;
   media?: T;
   content?: T;
@@ -1211,10 +1231,10 @@ export interface MediaContentBlockSelect<T extends boolean = true> {
         newTab?: T;
         reference?: T;
         url?: T;
+        anchor?: T;
         label?: T;
         appearance?: T;
       };
-  id?: T;
   blockName?: T;
 }
 /**
@@ -1710,6 +1730,10 @@ export interface Header {
                 value: string | Post;
               } | null);
           url?: string | null;
+          /**
+           * Optional anchor link (e.g., #section-id) to scroll to a specific section
+           */
+          anchor?: string | null;
           label: string;
         };
         /**
@@ -1738,6 +1762,10 @@ export interface Header {
                       value: string | Post;
                     } | null);
                 url?: string | null;
+                /**
+                 * Optional anchor link (e.g., #section-id) to scroll to a specific section
+                 */
+                anchor?: string | null;
                 label: string;
               };
               id?: string | null;
@@ -1771,6 +1799,10 @@ export interface Header {
             value: string | Post;
           } | null);
       url?: string | null;
+      /**
+       * Optional anchor link (e.g., #section-id) to scroll to a specific section
+       */
+      anchor?: string | null;
       label: string;
     };
   };
@@ -1799,6 +1831,10 @@ export interface Footer {
                   value: string | Post;
                 } | null);
             url?: string | null;
+            /**
+             * Optional anchor link (e.g., #section-id) to scroll to a specific section
+             */
+            anchor?: string | null;
             label: string;
           };
           id?: string | null;
@@ -1822,6 +1858,10 @@ export interface Footer {
                   value: string | Post;
                 } | null);
             url?: string | null;
+            /**
+             * Optional anchor link (e.g., #section-id) to scroll to a specific section
+             */
+            anchor?: string | null;
             label: string;
           };
           id?: string | null;
@@ -1880,6 +1920,7 @@ export interface HeaderSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              anchor?: T;
               label?: T;
             };
         menuTitle?: T;
@@ -1894,6 +1935,7 @@ export interface HeaderSelect<T extends boolean = true> {
                     newTab?: T;
                     reference?: T;
                     url?: T;
+                    anchor?: T;
                     label?: T;
                   };
               id?: T;
@@ -1912,6 +1954,7 @@ export interface HeaderSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              anchor?: T;
               label?: T;
             };
       };
@@ -1937,6 +1980,7 @@ export interface FooterSelect<T extends boolean = true> {
                     newTab?: T;
                     reference?: T;
                     url?: T;
+                    anchor?: T;
                     label?: T;
                   };
               id?: T;
@@ -1956,6 +2000,7 @@ export interface FooterSelect<T extends boolean = true> {
                     newTab?: T;
                     reference?: T;
                     url?: T;
+                    anchor?: T;
                     label?: T;
                   };
               id?: T;

@@ -91,6 +91,15 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       label: 'Custom URL',
       required: true,
     },
+    {
+      name: 'anchor',
+      type: 'text',
+      admin: {
+        description: 'Optional anchor link (e.g., #section-id) to scroll to a specific section',
+        placeholder: '#section-id',
+      },
+      label: 'Anchor Link (Optional)',
+    },
   ]
 
   if (!disableLabel) {

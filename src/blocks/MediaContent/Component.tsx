@@ -13,10 +13,10 @@ import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 
 export const MediaContentBlock: React.FC<MediaContentBlockProps> = (props) => {
-  const { media, content, link, enableLink, layout = 'imageLeft' } = props
+  const { media, content, link, enableLink, layout = 'imageLeft', id } = props
 
   return (
-    <div>
+    <div className="my-16" id={id || undefined}>
       <motion.div
         className={cn('grid lg:grid-cols-2 items-center lg:min-h-[40vh] 2xl:min-h-[60vh] relative')}
         initial={{ opacity: 0, y: 50 }}

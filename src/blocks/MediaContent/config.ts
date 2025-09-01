@@ -17,6 +17,14 @@ export const MediaContent: Block = {
   },
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Unique ID for anchor links (e.g., "about-us" for #about-us)',
+        placeholder: 'section-id',
+      },
+    },
+    {
       name: 'layout',
       type: 'select',
       defaultValue: 'imageLeft',

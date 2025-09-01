@@ -68,11 +68,18 @@ export const Content: Block = {
   interfaceName: 'ContentBlock',
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        description: 'Unique ID for anchor links (e.g., "about-us" for #about-us)',
+        placeholder: 'section-id',
+      },
+    },
+    {
       name: 'backgroundColor',
       type: 'text',
       admin: {
         description: 'Background color (hex value, e.g., #ffffff or color name)',
-        placeholder: '#ffffff',
       },
     },
     {
@@ -80,15 +87,11 @@ export const Content: Block = {
       type: 'text',
       admin: {
         description: 'Text color (hex value, e.g., #000000 or color name)',
-        placeholder: '#000000',
       },
     },
     {
       name: 'columns',
       type: 'array',
-      admin: {
-        initCollapsed: true,
-      },
       fields: columnFields,
     },
   ],

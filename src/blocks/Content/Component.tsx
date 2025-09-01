@@ -11,7 +11,7 @@ import Link from 'next/link'
 import { getHref } from '@/utilities/getHref'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
-  const { columns, backgroundColor, textColor } = props
+  const { columns, backgroundColor, textColor, id } = props
 
   const colsSpanClasses = {
     full: '12',
@@ -31,7 +31,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     : undefined
 
   return (
-    <div style={containerStyles}>
+    <div className="my-16" id={id || undefined} style={containerStyles}>
       <div className="container">
         <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16 py-10 lg:py-30">
           {columns &&
