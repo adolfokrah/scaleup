@@ -7,6 +7,7 @@ import RichText from '@/components/RichText'
 import { GridPattern } from '@/components/magicui/grid-pattern'
 import { cn } from '@/utilities/ui'
 import { motion } from 'framer-motion'
+import { BoxReveal } from '@/components/magicui/box-reveal'
 
 type LowImpactHeroType =
   | {
@@ -32,7 +33,9 @@ export const LowImpactHero: React.FC<LowImpactHeroType> = ({ children, richText 
           }}
           viewport={{ once: true, margin: '-100px' }}
         >
-          {children || (richText && <RichText data={richText} enableGutter={false} />)}
+          <BoxReveal boxColor="hsl(var(--primary))">
+            {children || (richText && <RichText data={richText} enableGutter={false} />)}
+          </BoxReveal>
         </motion.div>
       </div>
 
