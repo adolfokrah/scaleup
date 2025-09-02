@@ -34,7 +34,7 @@ export const LowImpactHero: React.FC<LowImpactHeroType> = ({ children, richText 
           viewport={{ once: true, margin: '-100px' }}
         >
           <BoxReveal boxColor="hsl(var(--primary))">
-            {children || (richText && <RichText data={richText} enableGutter={false} />)}
+            <div>{children || (richText && <RichText data={richText} enableGutter={false} />)}</div>
           </BoxReveal>
         </motion.div>
       </div>
