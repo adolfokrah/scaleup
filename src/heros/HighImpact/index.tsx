@@ -11,6 +11,7 @@ import RichText from '@/components/RichText'
 import Link from 'next/link'
 import { getHref } from '@/utilities/getHref'
 import { Button } from '@/components/ui/button'
+import { BoxReveal } from '@/components/magicui/box-reveal'
 
 export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
   const { setHeaderTheme } = useHeaderTheme()
@@ -42,26 +43,22 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
           )}
           <div className="mt-20">
             {Array.isArray(links) && links.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
-              >
-                <ul className="flex flex-col md:flex-row md:items-center gap-4">
-                  {links.map(({ link }, i) => {
-                    const href = getHref({ ...link })
-                    if (!href) return null
+              <ul className="flex flex-col md:flex-row md:items-center gap-4">
+                {links.map(({ link }, i) => {
+                  const href = getHref({ ...link })
+                  if (!href) return null
 
-                    return (
-                      <li key={i}>
+                  return (
+                    <li key={i}>
+                      <BoxReveal boxColor="hsl(var(--primary))">
                         <Link href={href}>
                           <Button variant={link.appearance}>{link.label.toUpperCase()}</Button>
                         </Link>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </motion.div>
+                      </BoxReveal>
+                    </li>
+                  )
+                })}
+              </ul>
             )}
           </div>
         </div>
