@@ -38,7 +38,7 @@ export const MediaContentBlock: React.FC<MediaContentBlockProps> = (props) => {
 
         {/* Media Section */}
         <motion.div
-          className={cn('relative flex items-center z-10 2xl:min-h-[80vh] order-1', {
+          className={cn('relative flex items-center z-10 2xl:min-h-[80vh] order-1 py-0 lg:py-20', {
             'justify-start pl-0 pr-8': layout === 'imageLeft',
             'justify-end pl-8 pr-0 lg:order-2': layout === 'imageRight',
           })}

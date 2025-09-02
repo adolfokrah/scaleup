@@ -5,10 +5,50 @@
 /* Container customization for Tailwind v4 */
 @layer base {
   .container {
-    max-width: 1600px !important;
+    width: 100% !important;
     margin: 0 auto !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
+  }
+}
+
+/* Standard CSS media queries for container responsiveness */
+
+/* Small screens (sm: 640px and up) */
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+/* Medium screens (md: 768px and up) */
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+/* Large screens (lg: 1024px and up) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px !important;
+  }
+}
+
+/* Extra large screens (xl: 1280px and up) */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px !important;
+  }
+}
+
+/* 2XL screens (2xl: 1536px and up) */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1600px !important;
   }
 }
 
