@@ -38,7 +38,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     <div>
       <LowImpactHero>
         <div className="w-fit">
-          <h1 className="text-4xl md:text-6xl font-bold font-tiempos underline-static after:!h-5 mt-20">
+          <h1 className="text-5xl md:text-6xl lg:text-8xl font-regular font-tiempos underline-static after:!h-5 mt-20">
             Articles
           </h1>
         </div>
