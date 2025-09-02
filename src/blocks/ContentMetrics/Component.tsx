@@ -113,7 +113,7 @@ export const ContentMetricsBlock: React.FC<ContentMetricsBlockProps> = (props) =
           {metrics?.map((metric, index) => (
             <div
               key={metric.id}
-              className={cn('flex flex-col py-10 bg-primary', {
+              className={cn('flex flex-col py-15 bg-primary', {
                 'bg-pimary pl-0 lg:bg-secondary md:pl-10': index === metrics.length - 1,
               })}
             >
