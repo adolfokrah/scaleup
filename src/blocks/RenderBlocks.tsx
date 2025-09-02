@@ -5,6 +5,7 @@ import type { Page } from '@/payload-types'
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
+import { ContentMetricsBlock } from '@/blocks/ContentMetrics/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { GoogleMapsBlock } from '@/blocks/GoogleMaps/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
@@ -14,6 +15,7 @@ import { TeamBlock } from '@/blocks/TeamBlock/Component'
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
+  contentMetrics: ContentMetricsBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   googleMaps: GoogleMapsBlock,

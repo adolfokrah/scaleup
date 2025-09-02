@@ -198,6 +198,7 @@ export interface Page {
   layout: (
     | CallToActionBlock
     | ContentBlock
+    | ContentMetricsBlock
     | GoogleMapsBlock
     | MediaBlock
     | MediaContentBlock
@@ -526,6 +527,60 @@ export interface ContentBlock {
     | null;
   blockName?: string | null;
   blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentMetricsBlock".
+ */
+export interface ContentMetricsBlock {
+  id?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  ctaButton: {
+    text: string;
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: string | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: string | Post;
+          } | null);
+      url?: string | null;
+      /**
+       * Optional anchor link (e.g., #section-id) to scroll to a specific section
+       */
+      anchor?: string | null;
+      label: string;
+    };
+  };
+  metrics?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  image: string | Media;
+  blockName?: string | null;
+  blockType: 'contentMetrics';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1170,6 +1225,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
+        contentMetrics?: T | ContentMetricsBlockSelect<T>;
         googleMaps?: T | GoogleMapsBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         mediaContent?: T | MediaContentBlockSelect<T>;
@@ -1243,6 +1299,38 @@ export interface ContentBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentMetricsBlock_select".
+ */
+export interface ContentMetricsBlockSelect<T extends boolean = true> {
+  id?: T;
+  content?: T;
+  ctaButton?:
+    | T
+    | {
+        text?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              anchor?: T;
+              label?: T;
+            };
+      };
+  metrics?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  image?: T;
   blockName?: T;
 }
 /**

@@ -6,6 +6,7 @@ import React from 'react'
 import RichText from '@/components/RichText'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import { motion } from 'framer-motion'
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
