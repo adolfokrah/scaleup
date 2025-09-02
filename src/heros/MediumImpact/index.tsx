@@ -10,6 +10,8 @@ import RichText from '@/components/RichText'
 import { Button } from '@/components/ui/button'
 import { GridPattern } from '@/components/magicui/grid-pattern'
 import { cn } from '@/utilities/ui'
+import Link from 'next/link'
+import { getHref } from '@/utilities/getHref'
 
 export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
   return (
@@ -34,10 +36,12 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richTex
             >
               <ul className="flex gap-4">
                 {links.map(({ link }, i) => {
+                  const href = getHref(link)
+                  if (!href) return null
                   return (
-                    <li key={i}>
+                    <Link key={i} href={href}>
                       <Button variant={link.appearance}>{link.label.toUpperCase()}</Button>
-                    </li>
+                    </Link>
                   )
                 })}
               </ul>
